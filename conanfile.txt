@@ -1,5 +1,5 @@
 [requires]
-sdl/2.26.1
+sfml/2.5.1
 
 [generators]
 cmake
