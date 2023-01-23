@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+#include "MainMenuScreen.h"
 #include "Player.h"
 
 const std::string WINDOW_NAME{"Illumination"};
@@ -14,6 +15,8 @@ constexpr unsigned int SCREEN_HEIGHT{720};
 constexpr unsigned int FRAME_LIMIT{144};
 
 auto main() -> int {
+    MainMenuScreen screen{};
+
     sf::RenderWindow window{
         sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
         WINDOW_NAME
