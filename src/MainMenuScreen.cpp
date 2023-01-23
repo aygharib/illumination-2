@@ -11,14 +11,6 @@ MainMenuScreen::MainMenuScreen() {
     text.setPosition(0, 0);
 }
 
-auto MainMenuScreen::show() -> void {
-    std::cout << "Showing MainMenuScreen\n";
-}
-
-auto MainMenuScreen::hide() -> void {
-    std::cout << "Hiding MainMenuScreen\n";
-}
-
 auto MainMenuScreen::update(float deltaTime) -> void {
     std::cout << "Updating MainMenuScreen\n";
 }

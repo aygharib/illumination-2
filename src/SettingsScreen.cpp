@@ -13,14 +13,6 @@ SettingsScreen::SettingsScreen() {
     text.setPosition(0, 0);
 }
 
-auto SettingsScreen::show() -> void {
-    std::cout << "Showing SettingsScreen\n";
-}
-
-auto SettingsScreen::hide() -> void {
-    std::cout << "Hiding SettingsScreen\n";
-}
-
 auto SettingsScreen::update(float deltaTime) -> void {
     std::cout << "Updating SettingsScreen\n";
 }

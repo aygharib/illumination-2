@@ -17,6 +17,12 @@ constexpr unsigned int SCREEN_WIDTH{1280};
 constexpr unsigned int SCREEN_HEIGHT{720};
 constexpr unsigned int FRAME_LIMIT{144};
 
+enum class Options {
+    MainMenu,
+    Settings,
+    Game
+};
+
 auto main() -> int {
     sf::RenderWindow window{
         sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
@@ -24,7 +30,7 @@ auto main() -> int {
     };
     window.setFramerateLimit(FRAME_LIMIT);
 
-    int i = 1;
+    auto selected = Options::MainMenu;
 
     MainMenuScreen mainMenuScreen;
     SettingsScreen settingsScreen;
@@ -38,17 +44,14 @@ auto main() -> int {
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                     window.close();
                 }
-
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
-                    i = 1;
+                    selected = Options::MainMenu;
                 }
-
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
-                    i = 2;
+                    selected = Options::Settings;
                 }
-
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
-                    i = 3;
+                    selected = Options::Game;
                 }
             }
 
@@ -59,13 +62,15 @@ auto main() -> int {
 
         window.clear(sf::Color::Black);
 
-        if (i == 1) {
+        if (selected == Options::MainMenu) {
+            mainMenuScreen.update(1);
             mainMenuScreen.draw(window);
         }
-        else if (i == 2) {
+        else if (selected == Options::Settings) {
+            settingsScreen.update(1);
             settingsScreen.draw(window);
         }
-        else if (i == 3) {
+        else if (selected == Options::Game) {
             gameScreen.update(1);
             gameScreen.draw(window);
         }
