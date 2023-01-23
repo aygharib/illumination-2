@@ -7,6 +7,9 @@
 
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
+#include "SFML/Graphics/Font.hpp"
+#include "SFML/Graphics/Text.hpp"
+#include "SettingsScreen.h"
 
 const std::string WINDOW_NAME{"Illumination"};
 
@@ -21,6 +24,10 @@ auto main() -> int {
     };
     window.setFramerateLimit(FRAME_LIMIT);
 
+    int i = 1;
+
+    MainMenuScreen mainMenuScreen;
+    SettingsScreen settingsScreen;
     GameScreen gameScreen;
 
     while (window.isOpen()) {
@@ -31,6 +38,18 @@ auto main() -> int {
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                     window.close();
                 }
+
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+                    i = 1;
+                }
+
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
+                    i = 2;
+                }
+
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
+                    i = 3;
+                }
             }
 
             if (event.type == sf::Event::Closed) {
@@ -40,8 +59,16 @@ auto main() -> int {
 
         window.clear(sf::Color::Black);
 
-        gameScreen.update(1);
-        gameScreen.draw(window);
+        if (i == 1) {
+            mainMenuScreen.draw(window);
+        }
+        else if (i == 2) {
+            settingsScreen.draw(window);
+        }
+        else if (i == 3) {
+            gameScreen.update(1);
+            gameScreen.draw(window);
+        }
 
         window.display();
     }
