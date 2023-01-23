@@ -5,9 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include "MainMenuScreen.h"
-#include "SettingsScreen.h"
-#include "Player.h"
+#include "Game.h"
 
 const std::string WINDOW_NAME{"Illumination"};
 
@@ -16,24 +14,13 @@ constexpr unsigned int SCREEN_HEIGHT{720};
 constexpr unsigned int FRAME_LIMIT{144};
 
 auto main() -> int {
-    MainMenuScreen screen{};
-    screen.show();
-    screen.hide();
-    screen.update(1);
-    screen.draw(1);
-    SettingsScreen screen2{};
-    screen2.show();
-    screen2.hide();
-    screen2.update(1);
-    screen2.draw(1);
-
     sf::RenderWindow window{
         sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
         WINDOW_NAME
     };
     window.setFramerateLimit(FRAME_LIMIT);
 
-    Player player{};
+    Game game;
 
     while (window.isOpen()) {
         // Check all the window's events that were triggered since the last iteration of the loop
@@ -52,8 +39,8 @@ auto main() -> int {
 
         window.clear(sf::Color::Black);
 
-        player.update();
-        player.draw(window);
+        game.update(1);
+        game.draw(window);
 
         window.display();
     }

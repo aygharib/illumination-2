@@ -7,8 +7,8 @@ Player::Player() {
     square.setFillColor(sf::Color::White);
 }
 
-auto Player::update() -> void {
-    x++;
+auto Player::update(float deltaTime) -> void {
+    x = x + 1 * deltaTime;
 }
 
 auto Player::draw(sf::RenderWindow& window) -> void {

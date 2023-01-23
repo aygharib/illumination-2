@@ -12,6 +12,6 @@ auto MainMenuScreen::update(float deltaTime) -> void {
     std::cout << "Updating MainMenuScreen\n";
 }
 
-auto MainMenuScreen::draw(float deltaTime) -> void {
+auto MainMenuScreen::draw(sf::RenderWindow& window) -> void {
     std::cout << "Drawing MainMenuScreen\n";
 }

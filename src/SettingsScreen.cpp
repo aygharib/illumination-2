@@ -12,6 +12,6 @@ auto SettingsScreen::update(float deltaTime) -> void {
     std::cout << "Updating SettingsScreen\n";
 }
 
-auto SettingsScreen::draw(float deltaTime) -> void {
+auto SettingsScreen::draw(sf::RenderWindow& window) -> void {
     std::cout << "Drawing SettingsScreen\n";
 }
