@@ -2,6 +2,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Graphics.hpp>
 
+#include <chrono>
 #include <iostream>
 #include <string>
 
@@ -35,8 +36,15 @@ auto main() -> int {
     MainMenuScreen mainMenuScreen;
     SettingsScreen settingsScreen;
     GameScreen gameScreen;
+    
+    auto t1 = std::chrono::high_resolution_clock::now().time_since_epoch().count();
 
     while (window.isOpen()) {
+        auto t2 = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+        auto deltaTime = (t2 - t1) / 1000000000.F;
+        std::cout << deltaTime << '\n';
+        t1 = t2;
+
         // Check all the window's events that were triggered since the last iteration of the loop
         sf::Event event{};
         while (window.pollEvent(event)) {
@@ -71,7 +79,7 @@ auto main() -> int {
             settingsScreen.draw(window);
         }
         else if (selected == Options::Game) {
-            gameScreen.update(1);
+            gameScreen.update(deltaTime);
             gameScreen.draw(window);
         }
 

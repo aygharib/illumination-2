@@ -8,7 +8,7 @@ Player::Player() {
 }
 
 auto Player::update(float deltaTime) -> void {
-    x = x + 1 * deltaTime;
+    x += speed * deltaTime;
 }
 
 auto Player::draw(sf::RenderWindow& window) -> void {
