@@ -7,5 +7,5 @@ public:
     auto update(float deltaTime) -> void;
     auto draw(sf::RenderWindow& window) -> void;
 private:
-    Player player{};
+    Player player;
 };

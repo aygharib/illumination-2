@@ -5,7 +5,8 @@
 #include <iostream>
 #include <string>
 
-#include "Game.h"
+#include "GameScreen.h"
+#include "MainMenuScreen.h"
 
 const std::string WINDOW_NAME{"Illumination"};
 
@@ -20,7 +21,7 @@ auto main() -> int {
     };
     window.setFramerateLimit(FRAME_LIMIT);
 
-    Game game;
+    GameScreen gameScreen;
 
     while (window.isOpen()) {
         // Check all the window's events that were triggered since the last iteration of the loop
@@ -39,8 +40,8 @@ auto main() -> int {
 
         window.clear(sf::Color::Black);
 
-        game.update(1);
-        game.draw(window);
+        gameScreen.update(1);
+        gameScreen.draw(window);
 
         window.display();
     }

@@ -20,5 +20,5 @@ add_definitions("-std=c++20")
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-add_executable(illumination-2 src/main.cpp src/Player.cpp src/MainMenuScreen.cpp src/SettingsScreen.cpp src/Game.cpp)
+add_executable(illumination-2 src/main.cpp src/Player.cpp src/MainMenuScreen.cpp src/SettingsScreen.cpp src/GameScreen.cpp src/Game.cpp)
 target_link_libraries(illumination-2 ${CONAN_LIBS})

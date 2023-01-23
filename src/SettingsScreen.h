@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Screen.h"
 
 class SettingsScreen : public Screen {
