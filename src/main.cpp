@@ -16,6 +16,10 @@ constexpr unsigned int FRAME_LIMIT{144};
 
 auto main() -> int {
     MainMenuScreen screen{};
+    screen.show();
+    screen.hide();
+    screen.update(1);
+    screen.draw(1);
 
     sf::RenderWindow window{
         sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),

@@ -4,8 +4,8 @@
 
 class Screen {
 public:
-    virtual void show() = 0;
-    virtual void hide() = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void draw(float deltaTime) = 0;
+    virtual auto show() -> void = 0;
+    virtual auto hide() -> void = 0;
+    virtual auto update(float deltaTime) -> void = 0;
+    virtual auto draw(float deltaTime) -> void = 0;
 };

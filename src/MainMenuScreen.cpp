@@ -1,17 +1,17 @@
 #include "MainMenuScreen.h"
 
-void MainMenuScreen::show() {
+auto MainMenuScreen::show() -> void {
     std::cout << "Showing MainMenuScreen\n";
 }
 
-void MainMenuScreen::hide() {
+auto MainMenuScreen::hide() -> void {
     std::cout << "Hiding MainMenuScreen\n";
 }
 
-void MainMenuScreen::update(float deltaTime) {
+auto MainMenuScreen::update(float deltaTime) -> void {
     std::cout << "Updating MainMenuScreen\n";
 }
 
-void MainMenuScreen::draw(float deltaTime) {
+auto MainMenuScreen::draw(float deltaTime) -> void {
     std::cout << "Drawing MainMenuScreen\n";
 }

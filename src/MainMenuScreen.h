@@ -2,8 +2,8 @@
 
 class MainMenuScreen : public Screen {
 public:
-    void show() override;
-    void hide() override;
-    void update(float deltaTime) override;
-    void draw(float deltaTime) override;
+    auto show() -> void override;
+    auto hide() -> void override;
+    auto update(float deltaTime) -> void override;
+    auto draw(float deltaTime) -> void override;
 };
