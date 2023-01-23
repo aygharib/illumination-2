@@ -1,21 +1,26 @@
-#include "SFML/Window/Keyboard.hpp"
-#include <SFML/Window.hpp>
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include <SFML/Graphics.hpp>
 
 #include <iostream>
 #include <string>
 
+#include "Player.h"
+
 const std::string WINDOW_NAME{"Illumination"};
 
-constexpr unsigned int SCREEN_WIDTH{640};
-constexpr unsigned int SCREEN_HEIGHT{480};
+constexpr unsigned int SCREEN_WIDTH{1280};
+constexpr unsigned int SCREEN_HEIGHT{720};
 constexpr unsigned int FRAME_LIMIT{144};
 
 auto main() -> int {
-    sf::Window window{
+    sf::RenderWindow window{
         sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
         WINDOW_NAME
     };
     window.setFramerateLimit(FRAME_LIMIT);
+
+    Player player{};
 
     while (window.isOpen()) {
         // Check all the window's events that were triggered since the last iteration of the loop
@@ -32,7 +37,10 @@ auto main() -> int {
             }
         }
 
-        window.setActive();
+        window.clear(sf::Color::Black);
+
+        player.update();
+        player.draw(window);
 
         window.display();
     }
