@@ -6,6 +6,7 @@
 #include <string>
 
 #include "MainMenuScreen.h"
+#include "SettingsScreen.h"
 #include "Player.h"
 
 const std::string WINDOW_NAME{"Illumination"};
@@ -20,6 +21,11 @@ auto main() -> int {
     screen.hide();
     screen.update(1);
     screen.draw(1);
+    SettingsScreen screen2{};
+    screen2.show();
+    screen2.hide();
+    screen2.update(1);
+    screen2.draw(1);
 
     sf::RenderWindow window{
         sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
