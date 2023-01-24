@@ -8,7 +8,7 @@ Window::Window(const std::string& name) : window(sf::VideoMode(1280, 720), name)
 }
 
 auto Window::update() -> void {
-    sf::Event event;
+    sf::Event event{};
     if (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             window.close();
