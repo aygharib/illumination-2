@@ -7,6 +7,7 @@ auto main() -> int {
         game.update();
         game.lateUpdate();
         game.draw();
+        game.calculateDeltaTime();
     }
 
     return 0;
