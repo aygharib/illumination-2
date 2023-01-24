@@ -1,11 +1,15 @@
 #pragma once
 
-#include "Player.h"
+#include "Window.h"
 
 class Game {
 public:
-    auto update(float deltaTime) -> void;
-    auto draw(sf::RenderWindow& window) -> void;
+    Game();
+
+    auto update() -> void;
+    auto lateUpdate() -> void;
+    auto draw() -> void;
+    auto isRunning() -> bool;
 private:
-    Player player;
+    Window window;
 };

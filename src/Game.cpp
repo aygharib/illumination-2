@@ -1,9 +1,20 @@
 #include "Game.h"
 
-auto Game::update(float deltaTime) -> void {
-    player.update(deltaTime);
+Game::Game() : window("Illumination") {}
+
+auto Game::update() -> void {
+    window.update();
 }
 
-auto Game::draw(sf::RenderWindow& window) -> void {
-    player.draw(window);
+auto Game::lateUpdate() -> void {
+    
+}
+
+auto Game::draw() -> void {
+    window.beginDraw();
+    window.endDraw();
+}
+
+auto Game::isRunning() -> bool {
+    return window.isOpen();
 }
