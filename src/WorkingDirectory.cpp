@@ -1,4 +1,3 @@
 #include "WorkingDirectory.h"
 
-WorkingDirectory::WorkingDirectory() : path{"./"} {
-}
+WorkingDirectory::WorkingDirectory() : path{"./"} {}

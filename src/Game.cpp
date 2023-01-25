@@ -7,13 +7,36 @@ Game::Game() : window("Illumination") {
     deltaTime = clock.restart().asSeconds();
 }
 
+auto Game::captureInput() -> void {
+    input.update();
+}
+
 auto Game::update() -> void {
     window.update();
 
-    const auto& spritePosition = vikingSprite.getPosition();
-    const int pixelsToMovePerSecond = 100;
-    auto frameMovement = pixelsToMovePerSecond * deltaTime;
-    vikingSprite.setPosition(spritePosition.x + frameMovement, spritePosition.y);
+    const auto& spritePos = vikingSprite.getPosition();
+    const int moveSpeed = 100;
+    
+    int xMove = 0;
+    if(input.isKeyPressed(Input::Key::Left)) {
+        xMove = -moveSpeed;
+    }
+    else if(input.isKeyPressed(Input::Key::Right)) {
+        xMove = moveSpeed;
+    }
+    
+    int yMove = 0;
+    if(input.isKeyPressed(Input::Key::Up)) {
+        yMove = -moveSpeed;
+    }
+    else if(input.isKeyPressed(Input::Key::Down)) {
+        yMove = moveSpeed;
+    }
+
+    auto xFrameMove = static_cast<float>(xMove) * deltaTime;
+    auto yFrameMove = static_cast<float>(yMove) * deltaTime;
+    
+    vikingSprite.setPosition(spritePos.x + xFrameMove, spritePos.y + yFrameMove);
 }
 
 auto Game::lateUpdate() -> void {

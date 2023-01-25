@@ -4,6 +4,7 @@ auto main() -> int {
     Game game;
 
     while (game.isRunning()) {
+        game.captureInput();
         game.update();
         game.lateUpdate();
         game.draw();

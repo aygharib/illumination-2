@@ -1,4 +1,5 @@
 #include "Bitmask.h"
+
 #include <cstdint>
 
 Bitmask::Bitmask() : bits(0) {}
