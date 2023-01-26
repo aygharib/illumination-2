@@ -1,58 +1,48 @@
 #include "Game.h"
+#include "SceneGame.h"
+#include "SceneSplashScreen.h"
+#include <memory>
+
+#include <iostream>
 
 Game::Game() : window("Illumination") {
-    vikingTexture.loadFromFile(workingDirectory.get() + "resources/viking.png");
-    vikingSprite.setTexture(vikingTexture);
+    auto splashScreen = std::make_shared<SceneSplashScreen>(workingDirectory, sceneStateMachine, window);
+    auto gameScene = std::make_shared<SceneGame>(workingDirectory);
+
+    auto splashScreenId = sceneStateMachine.add(splashScreen);
+    auto gameSceneId = sceneStateMachine.add(gameScene);
+    
+    splashScreen->setSwitchToScene(gameSceneId);
+
+    sceneStateMachine.switchTo(splashScreenId);
 
     deltaTime = clock.restart().asSeconds();
 }
 
 auto Game::captureInput() -> void {
-    input.update();
+    sceneStateMachine.processInput();
 }
 
 auto Game::update() -> void {
     window.update();
 
-    const auto& spritePos = vikingSprite.getPosition();
-    const int moveSpeed = 100;
-    
-    int xMove = 0;
-    if(input.isKeyPressed(Input::Key::Left)) {
-        xMove = -moveSpeed;
-    }
-    else if(input.isKeyPressed(Input::Key::Right)) {
-        xMove = moveSpeed;
-    }
-    
-    int yMove = 0;
-    if(input.isKeyPressed(Input::Key::Up)) {
-        yMove = -moveSpeed;
-    }
-    else if(input.isKeyPressed(Input::Key::Down)) {
-        yMove = moveSpeed;
-    }
-
-    auto xFrameMove = static_cast<float>(xMove) * deltaTime;
-    auto yFrameMove = static_cast<float>(yMove) * deltaTime;
-    
-    vikingSprite.setPosition(spritePos.x + xFrameMove, spritePos.y + yFrameMove);
+    sceneStateMachine.update(deltaTime);
 }
 
 auto Game::lateUpdate() -> void {
-    
-}
-
-auto Game::calculateDeltaTime() -> void {
-    deltaTime = clock.restart().asSeconds();
+    sceneStateMachine.lateUpdate(deltaTime);
 }
 
 auto Game::draw() -> void {
     window.beginDraw();
 
-    window.draw(vikingSprite);
+    sceneStateMachine.draw(window);
 
     window.endDraw();
+}
+
+auto Game::calculateDeltaTime() -> void {
+    deltaTime = clock.restart().asSeconds();
 }
 
 auto Game::isRunning() -> bool {

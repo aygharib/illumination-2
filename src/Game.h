@@ -4,6 +4,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/Clock.hpp>
 
+#include "SceneStateMachine.h"
 #include "Window.h"
 #include "WorkingDirectory.h"
 #include "Input.h"
@@ -21,11 +22,9 @@ public:
 private:
     Window window;
     WorkingDirectory workingDirectory;
-    Input input;
-
-    sf::Texture vikingTexture;
-    sf::Sprite vikingSprite;
 
     sf::Clock clock;
     float deltaTime;
+
+    SceneStateMachine sceneStateMachine;
 };

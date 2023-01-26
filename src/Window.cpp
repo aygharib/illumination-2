@@ -28,6 +28,12 @@ auto Window::endDraw() -> void {
     window.display();
 }
 
+auto Window::getCentre() -> sf::Vector2u {
+    auto size = window.getSize();
+    
+    return {size.x / 2, size.y / 2};
+}
+
 auto Window::isOpen() -> bool {
     return window.isOpen();
 }
