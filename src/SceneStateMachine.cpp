@@ -1,7 +1,5 @@
 #include "SceneStateMachine.h"
 
-#include <iostream>
-
 SceneStateMachine::SceneStateMachine() : currentScene(nullptr), insertedSceneId(0) {}
 
 auto SceneStateMachine::processInput() -> void {
@@ -28,7 +26,7 @@ auto SceneStateMachine::draw(Window& window) -> void {
     }
 }
 
-auto SceneStateMachine::add(std::shared_ptr<Scene> scene) -> unsigned int {
+auto SceneStateMachine::add(const std::shared_ptr<Scene>& scene) -> unsigned int {
     auto inserted = scenes.insert(std::make_pair(insertedSceneId, scene));
 
     // .first selects the iterator returned from insert (<iterator, bool>)

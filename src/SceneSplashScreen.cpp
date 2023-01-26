@@ -8,10 +8,10 @@ auto SceneSplashScreen::onCreate() -> void {
     splashSprite.setTexture(splashTexture);
     
     auto spriteSize = splashSprite.getLocalBounds();
-    splashSprite.setOrigin(spriteSize.width * 0.5f, spriteSize.height * 0.5f);
+    splashSprite.setOrigin(spriteSize.width * 0.5F, spriteSize.height * 0.5F);
     
     auto windowCentre = window.getCentre();
-    splashSprite.setPosition(windowCentre.x, windowCentre.y);
+    splashSprite.setPosition(static_cast<float>(windowCentre.x), static_cast<float>(windowCentre.y));
 }
 
 auto SceneSplashScreen::onDestroy() -> void {

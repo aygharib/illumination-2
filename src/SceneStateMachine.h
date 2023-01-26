@@ -15,7 +15,7 @@ public:
     auto lateUpdate(float deltaTime) -> void;
     auto draw(Window& window) -> void;
 
-    auto add(std::shared_ptr<Scene> scene) -> unsigned int;
+    auto add(const std::shared_ptr<Scene>& scene) -> unsigned int;
     auto switchTo(unsigned int id) -> void;
     auto remove(unsigned int id) -> void;
 private:
